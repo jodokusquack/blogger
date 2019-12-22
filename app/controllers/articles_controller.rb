@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   
   def index
     @articles = Article.all    
-    @popular_articles = Article.order(view_count: :desc, created_at: :asc).limit(3)
+    @popular_articles = Article.order(new_view_count: :desc, created_at: :asc).limit(3)
   end
   
   def show
@@ -64,7 +64,7 @@ class ArticlesController < ApplicationController
       end
     end
 
-    @popular_articles = Article.order(view_count: :desc, created_at: :asc).limit(3)
+    @popular_articles = Article.order(new_view_count: :desc, created_at: :asc).limit(3)
 
     render "index"
   end
