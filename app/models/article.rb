@@ -18,9 +18,9 @@ class Article < ApplicationRecord
 
   def increment_view_count
     if self.view_count == nil
-      self.view_count = 1
+      self.view_count = 1      
     else
-      self.view_count += 1
+      self.view_count += 1 unless self.view_count >= 999999
     end
     self.save
   end

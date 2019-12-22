@@ -1,12 +1,11 @@
 class ArticlesController < ApplicationController
   before_action :require_login, except: [:index, :show]
 
-  layout "articles_layout"
-
   include ArticlesHelper
   
   def index
     @articles = Article.all
+    @popular_articles = Article.order(view_count: :desc, created_at: :asc).limit(3)
   end
   
   def show

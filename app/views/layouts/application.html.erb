@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blogger</title>
+    <title>Jakob's Blog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -28,19 +28,19 @@
       </h6>
     </div>
     <nav class="side-nav">
-    <div class="wrapper">
-    Links 
-    <hr>
-      <ul>
-        <li><%= link_to "Articles", articles_path %></li>
-        <li><%= link_to "Tags", tags_path %></li>
+      <div class="wrapper">
+        Links 
+        <hr>
+        <ul>
+          <li><%= link_to "Articles", articles_path %></li>
+          <li><%= link_to "Tags", tags_path %></li>
         
-        <% if  logged_in? %>
-          <li><%= link_to "Authors", authors_path %></li>
-        <% end %>
-        
-        
-      </ul>
+          <% if  logged_in? %>
+            <li><%= link_to "Authors", authors_path %></li>
+          <% end %>
+        </ul>
+        <hr>
+        <%= yield :navbar %>
       </div>
     </nav>
   </div>

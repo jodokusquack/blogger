@@ -66,15 +66,20 @@ nav.side-nav {
   text-align: center;
 }
 
-nav.side-nav a {
-  color: white;
-  line-height: 2em;
-  font-weight: 500;
-}
-
-nav.side-nav ul {
-  list-style-type: disc;
-  color: white;
+nav.side-nav {
+  a {
+    color: white;
+    line-height: 2em;
+    font-weight: 500;
+  }
+  ul {
+    list-style-type: disc;
+    color: white;
+  }
+  ol {
+    list-style-type: decimal;
+    color: white;
+  }
 }
 
 #content {
