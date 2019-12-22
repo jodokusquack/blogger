@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
   root to: 'articles#index'
+
+  get 'articles/search/:year(/:month)' => 'articles#search', as: :articles_search
   resources :articles do
     resources :comments
   end
+
   resources :tags
+
   resources :authors
 
   resources :author_sessions, only: [ :new, :create, :destroy ]

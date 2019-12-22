@@ -7,21 +7,37 @@
   </ol>
 <% end %>
 
-
 <% if logged_in? %>
   <%= link_to 'Create a New Article', new_article_path , class: 'new_article'%>
 <% end %>
+
 <h1>All Articles</h1>
 
 
-<ul id="articles">
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article),
-          class: 'article-title', id: "article_#{article.id}" %>
-    </li>
+<% if @articles.any? %>
+
+  <ul id="articles">
+    <% @articles.each do |article| %>
+      <li>
+        <%= link_to article.title, article_path(article),
+            class: 'article-title', id: "article_#{article.id}" %>
+      </li>
+    <% end %>
+  </ul>
+  
+<% else %>
+  <p>No Articles Found. :( </p>
+<% end %>
+
+<hr>
+<p>
+  Sort by Date: 
+  <% @last_dates.each do |month| %>
+    |<%= link_to month.strftime("%B %Y"), articles_search_path(year: month.year, month: month.month) %>|
   <% end %>
-</ul>
+  |<%= link_to "Older", articles_search_path(year: "older") %>|
+    
+</p>
 
 
 

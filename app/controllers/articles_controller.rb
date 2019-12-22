@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   include ArticlesHelper
   
   def index
-    @articles = Article.all
+    @articles = Article.all    
     @popular_articles = Article.order(view_count: :desc, created_at: :asc).limit(3)
   end
   
@@ -51,4 +51,21 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def search
+    if params[:year] == "older"
+      @articles = Article.where("created_at <= ?", @last_dates[4])
+    else
+      timepoint = Time.gm(params[:year], params[:month])
+
+      @articles = Article.where(created_at: timepoint..timepoint + 1.year)
+
+      if params[:month]
+        @articles = @articles.where(created_at: timepoint..timepoint + 1.month)
+      end
+    end
+
+    @popular_articles = Article.order(view_count: :desc, created_at: :asc).limit(3)
+
+    render "index"
+  end
 end
