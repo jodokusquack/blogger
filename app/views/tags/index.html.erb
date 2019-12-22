@@ -1,12 +1,14 @@
 <h1>All Tags</h1>
 
-<ul>
+<table>
+
   <% @tags.each do |tag| %>
-  <li><%= link_to tag.name, tag_path(tag), class: 'tag-name', id: "tag_#{tag.id}" %>
-  <% if logged_in? %>
-    - <%= link_to "Delete Tag", tag_path(tag), method: :delete, data: {confirm: "Do you really want to delete this tag?"}  %>
+  <tr>
+    <td><%= link_to tag.name, tag_path(tag), class: 'tag-name', id: "tag_#{tag.id}" %></td>
+    <% if logged_in? %>
+      <td><%= link_to "Delete Tag", tag_path(tag), method: :delete, data: {confirm: "Do you really want to delete this tag?"}  %></td>
+    <% end %>
+  </tr>  
   <% end %>
-  </li><br>    
-  
-  <% end %>
-</ul>
+
+</table>

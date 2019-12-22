@@ -1,4 +1,4 @@
-$primary_color: rgb(91, 218, 196);
+$primary_color: #110db2;
 
 body {
   background-color: $primary_color;
@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  color:#FFF
+  color: rgb(67, 233, 197)
   img {
     border: none;
   }
@@ -24,13 +24,82 @@ a {
 #container {
   width: 75%;
   margin: 0 auto;
-  background: rgb(209, 218, 221);
+  background: #00c4dd;
   padding: 20px 40px;
   border: solid 1px black;
   margin-top: 20px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.side-nav {
+  flex: 1 100%;
+}
+
+@media all and (min-width: 600px) {
+  .side-nav {
+    flex: 1 0 0;
+  }
+}
+
+@media all and (min-width: 800px) {
+  #content {
+    flex: 3 0px;
+    order: 1;
+  }
+
+  .side-nav {
+    order: 2;
+  }
+}
+
+nav.side-nav {
+  height: 250px;
+  overflow-x: hidden;
+  border: solid 1px black;
+  border-radius: 3px;
+  background: rgb(17, 13, 178);
+  background: linear-gradient(158deg, rgba(17, 13, 178, 1) 0%, rgba(9, 9, 121, 1) 24%, rgba(94, 19, 98, 1) 68%, rgba(0, 0, 0, 1) 100%);
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  text-align: center;
+}
+
+nav.side-nav a {
+  color: white;
+  line-height: 2em;
+  font-weight: 500;
+}
+
+nav.side-nav ul {
+  list-style-type: disc;
+  color: white;
 }
 
 #content {
-  clear: both;
   padding-top: 20px;
+  margin-right: 25px;
+  table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+  }
+  thead {
+    font-weight: bold;
+    font-size: 1.2em;
+    border-bottom: solid 2px black;
+  }
+  th, td {
+    padding: 4px;
+    text-align: center;
+  }
+  tbody tr:nth-child(odd) {
+    background-color: #009cb5;
+  }
+}
+
+.tooltip {
+  font-size: 0.8em;
 }
